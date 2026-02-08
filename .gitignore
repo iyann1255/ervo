@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Auth session
+auth_info/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
