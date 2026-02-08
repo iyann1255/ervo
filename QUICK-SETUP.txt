@@ -1,0 +1,72 @@
+╔═══════════════════════════════════════════════════════════╗
+║          SIMPLE WHATSAPP BOT - QUICK SETUP GUIDE          ║
+╚═══════════════════════════════════════════════════════════╝
+
+📋 LANGKAH INSTALL (VPS):
+
+1️⃣ HAPUS SESSION LAMA (jika ada error 405)
+   rm -rf auth_info/
+   
+2️⃣ INSTALL ULANG DEPENDENCIES
+   rm -rf node_modules package-lock.json
+   npm install
+   
+3️⃣ JALANKAN BOT
+   npm start
+   
+   ATAU pakai PM2 untuk 24/7:
+   ./start.sh
+
+4️⃣ PILIH METODE KONEKSI
+   - Option 1: QR Code → Scan dengan HP
+   - Option 2: Pairing Code → Masukin kode 8 digit di HP
+   
+   💡 RECOMMENDED: Pairing Code (lebih stabil di VPS)
+
+5️⃣ UNTUK PAIRING CODE:
+   - Pilih option 2
+   - Masukkan nomor (contoh: 628123456789)
+   - Tunggu muncul kode 8 digit
+   - Buka WhatsApp > Settings > Linked Devices
+   - Link a Device > Link with phone number
+   - Masukkan kode 8 digit
+
+📋 TROUBLESHOOTING ERROR 405:
+
+✅ Solusi 1: Pakai Pairing Code (bukan QR)
+   rm -rf auth_info/
+   npm start
+   → Pilih option 2
+
+✅ Solusi 2: Update Dependencies
+   npm install @whiskeysockets/baileys@latest
+   npm install
+   npm start
+
+✅ Solusi 3: Clear Cache
+   npm cache clean --force
+   rm -rf node_modules package-lock.json
+   npm install
+   npm start
+
+📋 COMMAND BOT:
+
+.menu / .help          → Tampilkan menu
+.rvo / .read / .liat   → Lihat view once (reply pesan)
+.s / .stiker           → Bikin sticker (kirim/reply gambar)
+
+📋 PM2 COMMANDS (untuk VPS 24/7):
+
+pm2 logs simple-bot      → Lihat logs real-time
+pm2 restart simple-bot   → Restart bot
+pm2 stop simple-bot      → Stop bot
+pm2 delete simple-bot    → Hapus dari PM2
+
+🆘 MASIH ERROR?
+
+1. Cek nomor WhatsApp sudah benar format 62xxx
+2. Pastikan WhatsApp di HP aktif & ada internet
+3. Jangan scan/link lebih dari 1x dalam waktu bersamaan
+4. Tunggu 2-3 menit setelah gagal sebelum coba lagi
+
+═══════════════════════════════════════════════════════════

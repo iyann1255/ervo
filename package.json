@@ -1,0 +1,22 @@
+{
+  "name": "simple-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp sederhana dengan fitur RVO dan Sticker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.8",
+    "@hapi/boom": "^10.0.1",
+    "pino": "^8.16.0",
+    "qrcode-terminal": "^0.12.0",
+    "qrcode": "^1.5.3",
+    "node-webpmux": "^3.1.7",
+    "sharp": "^0.33.0",
+    "wa-sticker-formatter": "^4.4.4",
+    "file-type": "^16.5.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "jimp": "^0.22.10"
+  }
+}
