@@ -19,8 +19,8 @@ async function startBot() {
     
     const sock = makeWASocket({
         auth: state,
-        printQRInTerminal: true,
-        logger: pino({ level: 'silent' })
+        logger: pino({ level: 'silent' }),
+        browser: ['Simple Bot', 'Chrome', '3.0']
     })
 
     // Handle koneksi
@@ -28,18 +28,28 @@ async function startBot() {
         const { connection, lastDisconnect, qr } = update
         
         if (qr) {
-            console.log('Scan QR code ini:')
+            console.log('\n========================================')
+            console.log('📱 SCAN QR CODE INI DENGAN WHATSAPP:')
+            console.log('========================================\n')
             qrcode.generate(qr, { small: true })
+            console.log('\n========================================')
         }
         
         if (connection === 'close') {
             const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut
-            console.log('Koneksi tertutup, reconnect:', shouldReconnect)
+            console.log('⚠️ Koneksi tertutup!')
+            
             if (shouldReconnect) {
-                startBot()
+                console.log('🔄 Mencoba reconnect...\n')
+                setTimeout(() => startBot(), 3000)
+            } else {
+                console.log('❌ Bot logged out. Hapus folder auth_info dan restart!')
             }
         } else if (connection === 'open') {
-            console.log('✅ Bot terhubung!')
+            console.log('\n✅ BOT BERHASIL TERHUBUNG!')
+            console.log('📱 Ketik .menu untuk melihat command\n')
+        } else if (connection === 'connecting') {
+            console.log('🔄 Menghubungkan ke WhatsApp...')
         }
     })
 
